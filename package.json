@@ -1,8 +1,8 @@
 {
-  "name": "sc2-sdk",
+  "name": "ezauth.js",
   "version": "1.0.2",
-  "description": "SteemConnect v2 SDK",
-  "main": "lib/sc2.js",
+  "description": "Ezauth Javascript SDK Library",
+  "main": "lib/ezauth.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "cross-env NODE_ENV=production && gulp build-browser && gulp build-node",
@@ -11,21 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adcpm/sc2-sdk.git"
+    "url": "git+https://github.com/eziranetwork/ezauth.js.git"
   },
   "keywords": [
-    "steem",
-    "steemit",
+    "ezira",
+    "ezira network",
     "blockchain",
-    "steemjs",
-    "steemconnect"
+    "ezauth",
+    "ezauth.js"
   ],
-  "author": "Bonustrack <fabien@bonustrack.co> (https://github.com/bonustrack)",
+  "author": "Lopu <lopu@lopudesigns.com> (https://github.com/lopudesigns)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/adcpm/sc2-sdk/issues"
+    "url": "https://github.com/eziranetwork/ezauth.js/issues"
   },
-  "homepage": "https://github.com/adcpm/sc2-sdk#readme",
+  "homepage": "https://github.com/eziranetwork/ezauth.js#readme",
   "dependencies": {
     "cross-fetch": "^1.1.1",
     "debug": "^2.2.0"

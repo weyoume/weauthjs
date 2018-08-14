@@ -1,13 +1,13 @@
 /* eslint-env browser */
 
-const sc2 = require('./sc2');
+const ezauth = require('./ezauth');
 
 if (typeof window !== 'undefined') {
-  window.sc2 = sc2;
+  window.ezauth = ezauth;
 }
 
 if (typeof global !== 'undefined') {
-  global.sc2 = sc2;
+  global.ezauth = ezauth;
 }
 
-module.exports = sc2;
+module.exports = ezauth;

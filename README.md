@@ -1,19 +1,19 @@
 ## Getting Started
-For general information about SteemConnect V2 and setting up your app please see this post from @noisy: [How to configure SteemConnect v2 and use it with your application](https://busy.org/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
+For general information about Ezauth and setting up your app please see this post from @noisy: [How to configure Ezauth and use it with your application](https://busy.org/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
 
-### Include the SC2 SDK in your HTML page
-You can download a minified version of sc2.js here: [https://steemit.github.io/sc2-angular/sc2.min.js](https://steemit.github.io/sc2-angular/sc2.min.js) and include it in your HTML page:
+### Include the Ezauth.js SDK in your HTML page
+You can download a minified version of ezauth.js here: [https://eziranetwork.github.io/ezauth.js-angular/ezauth.js.min.js](https://eziranetwork.github.io/ezauth.js-angular/ezauth.js.min.js) and include it in your HTML page:
 ```
-<script src="/scripts/sc2.min.js"></script>
+<script src="/scripts/ezauth.min.js"></script>
 ```
 
 ## SDK Methods
 ### Init SDK
 Call the Initialize() method when your app first loads to initialize the SDK:
 ```
-var sc2 = require('sc2-sdk');
+var ezauth = require('ezauth.js');
 
-var api = sc2.Initialize({
+var api = ezauth.Initialize({
   app: 'busy',
   callbackURL: 'http://localhost:8000/demo/',
   accessToken: 'access_token',
@@ -21,23 +21,23 @@ var api = sc2.Initialize({
 });
 ```
 Parameters:
-- __app__: This is the name of the app that was registered in the SteemConnect V2 dashboard
-- __callbackURL__: This is the URL that users will be redirected to after interacting with SC2. It must be listed in the "Redirect URI(s)" list in the app settings EXACTLY the same as it is specified here
-- __accessToken__: If you have an oauth2 access token for this user already you can specify it here, otherwise you can leave it and set it later using sc2.setAccessToken(accessToken).
-- __scope__: This is a list of operations the app will be able to access on the user's account. For a complete list of scopes see: [https://github.com/steemit/steemconnect/wiki/OAuth-2#scopes](https://github.com/steemit/steemconnect/wiki/OAuth-2#scopes)
+- __app__: This is the name of the app that was registered in the Ezauth dashboard
+- __callbackURL__: This is the URL that users will be redirected to after interacting with Ezauth. It must be listed in the "Redirect URI(s)" list in the app settings EXACTLY the same as it is specified here
+- __accessToken__: If you have an oauth2 access token for this user already you can specify it here, otherwise you can leave it and set it later using ezauth.setAccessToken(accessToken).
+- __scope__: This is a list of operations the app will be able to access on the user's account. For a complete list of scopes see: [https://github.com/eziranetwork/ezauth/wiki/OAuth-2#scopes](https://github.com/eziranetwork/ezauth/wiki/OAuth-2#scopes)
 
 ### Get Login URL
-The following method returns a URL that you can redirect the user to so that they may log in to your app through SC2:
+The following method returns a URL that you can redirect the user to so that they may log in to your app through Ezauth:
 ```
 var link = api.getLoginURL(state);
 console.log(link)
-// => https://steemconnect.com/oauth2/authorize?client_id=[app]&redirect_uri=[callbackURL]&scope=vote,comment&state=[state]
+// => https://auth.ezira.io/oauth2/authorize?client_id=[app]&redirect_uri=[callbackURL]&scope=vote,comment&state=[state]
 ```
 Parameters:
 - __state__: Data that will be passed to the callbackURL for your app after the user has logged in.
 
-After logging in, SC2 will redirect the user to the "redirect_uri" specified in the login url above and add the following query string parameters for your app to use:
-- __access_token__: This is the oauth2 access token that is required to make any Steem API calls on behalf of the current user. Once you have this you need to tell the SC2 SDK to use it by either specifying it as a parameter to the init() method call or by calling sc2.setAccessToken([accessToken]).
+After logging in, Ezauth will redirect the user to the "redirect_uri" specified in the login url above and add the following query string parameters for your app to use:
+- __access_token__: This is the oauth2 access token that is required to make any Ezira API calls on behalf of the current user. Once you have this you need to tell the Ezauth SDK to use it by either specifying it as a parameter to the init() method call or by calling ezauth.setAccessToken([accessToken]).
 - __expires_in__: The number of seconds until the access token expires.
 - __username__: The username of the current user.
 
@@ -66,9 +66,9 @@ api.vote(voter, author, permlink, weight, function (err, res) {
 });
 ```
 Parameters:
-- __voter__: The Steem username of the current user.
-- __author__: The Steem username of the author of the post or comment.
-- __permlink__: The link to the post or comment on which to vote. This is the portion of the URL after the last "/". For example the "permlink" for this post: https://steemit.com/steem/@ned/announcing-smart-media-tokens-smts would be "announcing-smart-media-tokens-smts".
+- __voter__: The Ezira username of the current user.
+- __author__: The Ezira username of the author of the post or comment.
+- __permlink__: The link to the post or comment on which to vote. This is the portion of the URL after the last "/". For example the "permlink" for this post: https://alpha.ezira.io/steem/@ned/announcing-smart-media-tokens-smts would be "announcing-smart-media-tokens-smts".
 - __weight__: The weight of the vote. 10000 equale a 100% vote.
 - __callback__: A function that is called once the vote is submitted and included in a block. If successful the "res" variable will be a JSON object containing the details of the block and the vote operation.
 
@@ -85,12 +85,12 @@ The sign() method creates a URL to which your app can redirect the user to perfo
 ```
 var link = api.sign('transfer', {
   to: 'fabien',
-  amount: '1.000 STEEM',
+  amount: '1.000 EZIRA',
   memo: 'Hello World!',
 }, 'http://localhost:8000/demo/transfer-complete');
 
 console.log(link);
-// => https://steemconnect.com/sign/transfer?to=fabien&amount=1.000%20STEEM&memo=Hello%20World!&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fdemo%2Ftransfer-complete
+// => https://auth.ezira.io/sign/transfer?to=fabien&amount=1.000%20EZIRA&memo=Hello%20World!&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fdemo%2Ftransfer-complete
 ```
 
 ### Logout
@@ -131,7 +131,7 @@ api.ignore(follower, following, function (err, res) {
 
 ### Claim Reward Balance
 ```
-api.claimRewardBalance(account, rewardSteem, rewardSbd, rewardVests, function (err, res) {
+api.claimRewardBalance(account, rewardEzira, rewardEzc, rewardVests, function (err, res) {
   console.log(err, res)
 });
 ```
@@ -149,3 +149,16 @@ api.updateUserMetadata(metadata, function (err, res) {
 
 #### 1.0.0
 - Migrated to instance based architecture. You have to create new instance using `Initialize` function now. See documentation above.
+
+## contributing
+
+### building
+
+```console
+[user@linux ~]$ npm i
+[user@linux ~]$ npm run build
+```
+publish if you want to
+```console
+[user@linux ~]$ npm publish
+```
