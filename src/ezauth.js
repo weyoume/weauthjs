@@ -172,16 +172,16 @@ Ezauth.prototype.ignore = function ignore(follower, following, cb) {
 
 Ezauth.prototype.claimRewardBalance = function claimRewardBalance(
   account,
-  rewardEzira,
-  rewardEzc,
-  rewardVests,
+  rewardECO,
+  rewardEZC,
+  rewardEZP,
   cb
 ) {
   const params = {
     account,
-    reward_ezira: rewardEzira,
-    reward_ezc: rewardEzc,
-    reward_vests: rewardVests,
+    reward_ECO: RewardECO,
+    reward_EZD: rewardEZC,
+    reward_EZP: rewardEZP,
   };
   return this.broadcast([['claim_reward_balance', params]], cb);
 };

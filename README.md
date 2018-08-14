@@ -85,12 +85,12 @@ The sign() method creates a URL to which your app can redirect the user to perfo
 ```
 var link = api.sign('transfer', {
   to: 'fabien',
-  amount: '1.000 EZIRA',
+  amount: '1.000 ECOT',
   memo: 'Hello World!',
 }, 'http://localhost:8000/demo/transfer-complete');
 
 console.log(link);
-// => https://auth.ezira.io/sign/transfer?to=fabien&amount=1.000%20EZIRA&memo=Hello%20World!&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fdemo%2Ftransfer-complete
+// => https://auth.ezira.io/sign/transfer?to=fabien&amount=1.000%20ECOT&memo=Hello%20World!&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fdemo%2Ftransfer-complete
 ```
 
 ### Logout
@@ -131,7 +131,7 @@ api.ignore(follower, following, function (err, res) {
 
 ### Claim Reward Balance
 ```
-api.claimRewardBalance(account, rewardEzira, rewardEzc, rewardVests, function (err, res) {
+api.claimRewardBalance(account, rewardEcoin, rewardEZD, rewardEZP, function (err, res) {
   console.log(err, res)
 });
 ```

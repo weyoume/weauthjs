@@ -1,6 +1,6 @@
 {
   "name": "ezauth.js",
-  "version": "1.0.2",
+  "version": "1.0.211",
   "description": "Ezauth Javascript SDK Library",
   "main": "lib/ezauth.js",
   "scripts": {
