@@ -137,7 +137,7 @@ Ezauth.prototype.reblog = function reblog(account, author, permlink, cb) {
       },
     ]),
   };
-  return this.broadcast([['custom_json', params]], cb);
+  return this.broadcast([['customJson', params]], cb);
 };
 
 Ezauth.prototype.follow = function follow(follower, following, cb) {
@@ -147,7 +147,7 @@ Ezauth.prototype.follow = function follow(follower, following, cb) {
     id: 'follow',
     json: JSON.stringify(['follow', { follower, following, what: ['blog'] }]),
   };
-  return this.broadcast([['custom_json', params]], cb);
+  return this.broadcast([['customJson', params]], cb);
 };
 
 Ezauth.prototype.unfollow = function unfollow(unfollower, unfollowing, cb) {
@@ -157,7 +157,7 @@ Ezauth.prototype.unfollow = function unfollow(unfollower, unfollowing, cb) {
     id: 'follow',
     json: JSON.stringify(['follow', { follower: unfollower, following: unfollowing, what: [] }]),
   };
-  return this.broadcast([['custom_json', params]], cb);
+  return this.broadcast([['customJson', params]], cb);
 };
 
 Ezauth.prototype.ignore = function ignore(follower, following, cb) {
@@ -167,23 +167,23 @@ Ezauth.prototype.ignore = function ignore(follower, following, cb) {
     id: 'follow',
     json: JSON.stringify(['follow', { follower, following, what: ['ignore'] }]),
   };
-  return this.broadcast([['custom_json', params]], cb);
+  return this.broadcast([['customJson', params]], cb);
 };
 
 Ezauth.prototype.claimRewardBalance = function claimRewardBalance(
   account,
   rewardECO,
-  rewardEZC,
-  rewardEZP,
+  rewardEUSD,
+  rewardESCOR,
   cb
 ) {
   const params = {
     account,
-    reward_ECO: RewardECO,
-    reward_EZD: rewardEZC,
-    reward_EZP: rewardEZP,
+    ECOreward: RewardECO,
+    EUSDreward: rewardEUSD,
+    rewardESCOR: rewardESCOR,
   };
-  return this.broadcast([['claim_reward_balance', params]], cb);
+  return this.broadcast([['claimRewardBalance', params]], cb);
 };
 
 Ezauth.prototype.revokeToken = function revokeToken(cb) {

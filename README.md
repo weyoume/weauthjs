@@ -1,5 +1,5 @@
 ## Getting Started
-For general information about Ezauth and setting up your app please see this post from @noisy: [How to configure Ezauth and use it with your application](https://busy.org/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
+For general information about Ezauth and setting up your app please see this post from @noisy: [How to configure Ezauth and use it with your application](https://ezira.io/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
 
 ### Include the Ezauth.js SDK in your HTML page
 You can download a minified version of ezauth.js here: [https://eziranetwork.github.io/ezauth.js-angular/ezauth.js.min.js](https://eziranetwork.github.io/ezauth.js-angular/ezauth.js.min.js) and include it in your HTML page:
@@ -14,7 +14,7 @@ Call the Initialize() method when your app first loads to initialize the SDK:
 var ezauth = require('ezauth.js');
 
 var api = ezauth.Initialize({
-  app: 'busy',
+  app: 'ezapp',
   callbackURL: 'http://localhost:8000/demo/',
   accessToken: 'access_token',
   scope: ['vote', 'comment']
@@ -131,7 +131,7 @@ api.ignore(follower, following, function (err, res) {
 
 ### Claim Reward Balance
 ```
-api.claimRewardBalance(account, rewardEcoin, rewardEZD, rewardEZP, function (err, res) {
+api.claimRewardBalance(account, rewardEcoin, rewardEUSD, rewardESCOR, function (err, res) {
   console.log(err, res)
 });
 ```

@@ -1,7 +1,7 @@
 {
   "name": "ezauth.js",
-  "version": "1.0.211",
-  "description": "Ezauth Javascript SDK Library",
+  "version": "1.0.212",
+  "description": "Ezira Protocol Javascript SDK Library",
   "main": "lib/ezauth.js",
   "scripts": {
     "prepublish": "npm run build",
