@@ -75,7 +75,7 @@ Parameters:
 ### Comment
 The comment() method will post a comment on an existing post or comment from the current user:
 ```
-api.comment(parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, function (err, res) {
+api.comment(parentAuthor, parentPermlink, author, permlink, title, body, json, function (err, res) {
   console.log(err, res)
 });
 ```
@@ -131,7 +131,7 @@ api.ignore(follower, following, function (err, res) {
 
 ### Claim Reward Balance
 ```
-api.claimRewardBalance(account, rewardEcoin, rewardEUSD, rewardESCOR, function (err, res) {
+api.claimRewardBalance(account, ECOrewardin, EUSDreward, ESCORreward, function (err, res) {
   console.log(err, res)
 });
 ```

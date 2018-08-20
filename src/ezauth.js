@@ -108,7 +108,7 @@ Ezauth.prototype.comment = function comment(
   permlink,
   title,
   body,
-  jsonMetadata,
+  json,
   cb
 ) {
   const params = {
@@ -118,7 +118,7 @@ Ezauth.prototype.comment = function comment(
     permlink,
     title,
     body,
-    json_metadata: JSON.stringify(jsonMetadata),
+    json: JSON.stringify(json),
   };
   return this.broadcast([['comment', params]], cb);
 };
@@ -172,16 +172,16 @@ Ezauth.prototype.ignore = function ignore(follower, following, cb) {
 
 Ezauth.prototype.claimRewardBalance = function claimRewardBalance(
   account,
-  rewardECO,
-  rewardEUSD,
-  rewardESCOR,
+  ECOreward,
+  EUSDreward,
+  ESCORreward,
   cb
 ) {
   const params = {
     account,
-    ECOreward: RewardECO,
-    EUSDreward: rewardEUSD,
-    rewardESCOR: rewardESCOR,
+    ECOreward: ECOreward,
+    EUSDreward: EUSDreward,
+    ESCORreward: ESCORreward,
   };
   return this.broadcast([['claimRewardBalance', params]], cb);
 };
