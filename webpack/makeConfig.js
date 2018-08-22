@@ -45,7 +45,7 @@ function makeConfig(options) {
   return {
     devtool: isDevelopment ? 'cheap-eval-source-map' : 'source-map',
     entry: {
-      ezauth: path.join(options.baseDir, 'src/browser.js')
+      path: path.join(options.baseDir, 'src/browser.js')
     },
     output: {
       path: path.join(options.baseDir, 'dist'),

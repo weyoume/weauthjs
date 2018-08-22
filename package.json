@@ -1,8 +1,8 @@
 {
-  "name": "ezauth.js",
+  "name": "weauthjs",
   "version": "1.0.212",
   "description": "Ezira Protocol Javascript SDK Library",
-  "main": "lib/ezauth.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "cross-env NODE_ENV=production && gulp build-browser && gulp build-node",
@@ -11,21 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eziranetwork/ezauth.js.git"
+    "url": "git+https://github.com/eziranetwork/weauthjs.git"
   },
   "keywords": [
     "ezira",
     "ezira network",
     "blockchain",
-    "ezauth",
-    "ezauth.js"
+    "weauth",
+    "weauthjs"
   ],
   "author": "Lopu <lopu@lopudesigns.com> (https://github.com/lopudesigns)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/eziranetwork/ezauth.js/issues"
+    "url": "https://github.com/eziranetwork/weauthjs/issues"
   },
-  "homepage": "https://github.com/eziranetwork/ezauth.js#readme",
+  "homepage": "https://github.com/eziranetwork/weauthjs#readme",
   "dependencies": {
     "cross-fetch": "^1.1.1",
     "debug": "^2.2.0"

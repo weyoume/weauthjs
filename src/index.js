@@ -14,7 +14,7 @@ class SDKError extends Error {
   }
 }
 
-function Ezauth() {
+function weauthjs() {
   this.options = {
     baseURL: 'https://auth.ezira.io',
     app: '',
@@ -23,26 +23,26 @@ function Ezauth() {
   };
 }
 
-Ezauth.prototype.setBaseURL = function setBaseURL(baseURL) {
+weauthjs.prototype.setBaseURL = function setBaseURL(baseURL) {
   this.options.baseURL = baseURL;
 };
-Ezauth.prototype.setApp = function setApp(app) {
+weauthjs.prototype.setApp = function setApp(app) {
   this.options.app = app;
 };
-Ezauth.prototype.setCallbackURL = function setCallbackURL(callbackURL) {
+weauthjs.prototype.setCallbackURL = function setCallbackURL(callbackURL) {
   this.options.callbackURL = callbackURL;
 };
-Ezauth.prototype.setAccessToken = function setAccessToken(accessToken) {
+weauthjs.prototype.setAccessToken = function setAccessToken(accessToken) {
   this.options.accessToken = accessToken;
 };
-Ezauth.prototype.removeAccessToken = function removeAccessToken() {
+weauthjs.prototype.removeAccessToken = function removeAccessToken() {
   this.options.accessToken = undefined;
 };
-Ezauth.prototype.setScope = function setScope(scope) {
+weauthjs.prototype.setScope = function setScope(scope) {
   this.options.scope = scope;
 };
 
-Ezauth.prototype.getLoginURL = function getLoginURL(state) {
+weauthjs.prototype.getLoginURL = function getLoginURL(state) {
   let loginURL = `${this.options.baseURL}/oauth2/authorize?client_id=${
     this.options.app
   }&redirect_uri=${encodeURIComponent(this.options.callbackURL)}`;
@@ -51,7 +51,7 @@ Ezauth.prototype.getLoginURL = function getLoginURL(state) {
   return loginURL;
 };
 
-Ezauth.prototype.send = function send(route, method, body, cb) {
+weauthjs.prototype.send = function send(route, method, body, cb) {
   const url = `${this.options.baseURL}/api/${route}`;
   const promise = fetch(url, {
     method,
@@ -67,13 +67,13 @@ Ezauth.prototype.send = function send(route, method, body, cb) {
       // If the status is something other than 200 we need
       // to reject the result since the request is not considered as a fail
       if (res.status !== 200) {
-        return json.then(result => Promise.reject(new SDKError('ezauth.js error', result)));
+        return json.then(result => Promise.reject(new SDKError('weauthjs error', result)));
       }
       return json;
     })
     .then((res) => {
       if (res.error) {
-        return Promise.reject(new SDKError('ezauth.js error', res));
+        return Promise.reject(new SDKError('weauthjs error', res));
       }
       return res;
     });
@@ -83,15 +83,15 @@ Ezauth.prototype.send = function send(route, method, body, cb) {
   return promise.then(res => cb(null, res)).catch(err => cb(err, null));
 };
 
-Ezauth.prototype.broadcast = function broadcast(operations, cb) {
+weauthjs.prototype.broadcast = function broadcast(operations, cb) {
   return this.send('broadcast', 'POST', { operations }, cb);
 };
 
-Ezauth.prototype.me = function me(cb) {
+weauthjs.prototype.me = function me(cb) {
   return this.send('me', 'POST', {}, cb);
 };
 
-Ezauth.prototype.vote = function vote(voter, author, permlink, weight, cb) {
+weauthjs.prototype.vote = function vote(voter, author, permlink, weight, cb) {
   const params = {
     voter,
     author,
@@ -101,7 +101,7 @@ Ezauth.prototype.vote = function vote(voter, author, permlink, weight, cb) {
   return this.broadcast([['vote', params]], cb);
 };
 
-Ezauth.prototype.comment = function comment(
+weauthjs.prototype.comment = function comment(
   parentAuthor,
   parentPermlink,
   author,
@@ -123,7 +123,7 @@ Ezauth.prototype.comment = function comment(
   return this.broadcast([['comment', params]], cb);
 };
 
-Ezauth.prototype.reblog = function reblog(account, author, permlink, cb) {
+weauthjs.prototype.reblog = function reblog(account, author, permlink, cb) {
   const params = {
     required_auths: [],
     required_posting_auths: [account],
@@ -140,7 +140,7 @@ Ezauth.prototype.reblog = function reblog(account, author, permlink, cb) {
   return this.broadcast([['customJson', params]], cb);
 };
 
-Ezauth.prototype.follow = function follow(follower, following, cb) {
+weauthjs.prototype.follow = function follow(follower, following, cb) {
   const params = {
     required_auths: [],
     required_posting_auths: [follower],
@@ -150,7 +150,7 @@ Ezauth.prototype.follow = function follow(follower, following, cb) {
   return this.broadcast([['customJson', params]], cb);
 };
 
-Ezauth.prototype.unfollow = function unfollow(unfollower, unfollowing, cb) {
+weauthjs.prototype.unfollow = function unfollow(unfollower, unfollowing, cb) {
   const params = {
     required_auths: [],
     required_posting_auths: [unfollower],
@@ -160,7 +160,7 @@ Ezauth.prototype.unfollow = function unfollow(unfollower, unfollowing, cb) {
   return this.broadcast([['customJson', params]], cb);
 };
 
-Ezauth.prototype.ignore = function ignore(follower, following, cb) {
+weauthjs.prototype.ignore = function ignore(follower, following, cb) {
   const params = {
     required_auths: [],
     required_posting_auths: [follower],
@@ -170,7 +170,7 @@ Ezauth.prototype.ignore = function ignore(follower, following, cb) {
   return this.broadcast([['customJson', params]], cb);
 };
 
-Ezauth.prototype.claimRewardBalance = function claimRewardBalance(
+weauthjs.prototype.claimRewardBalance = function claimRewardBalance(
   account,
   ECOreward,
   EUSDreward,
@@ -186,19 +186,19 @@ Ezauth.prototype.claimRewardBalance = function claimRewardBalance(
   return this.broadcast([['claimRewardBalance', params]], cb);
 };
 
-Ezauth.prototype.revokeToken = function revokeToken(cb) {
+weauthjs.prototype.revokeToken = function revokeToken(cb) {
   return this.send('oauth2/token/revoke', 'POST', { token: this.options.accessToken }, cb).then(
     () => this.removeAccessToken()
   );
 };
 
-Ezauth.prototype.updateUserMetadata = function updateUserMetadata(metadata = {}, cb) {
+weauthjs.prototype.updateUserMetadata = function updateUserMetadata(metadata = {}, cb) {
   return this.send('me', 'PUT', { user_metadata: metadata }, cb);
 };
 
-Ezauth.prototype.sign = function sign(name, params, redirectUri) {
+weauthjs.prototype.sign = function sign(name, params, redirectUri) {
   if (typeof name !== 'string' || typeof params !== 'object') {
-    return new SDKError('ezauth.js error', {
+    return new SDKError('weauthjs error', {
       error: 'invalid_request',
       error_description: 'Request has an invalid format',
     });
@@ -212,7 +212,7 @@ Ezauth.prototype.sign = function sign(name, params, redirectUri) {
 };
 
 exports.Initialize = function Initialize(config) {
-  const instance = new Ezauth();
+  const instance = new weauthjs();
 
   if (!config) {
     throw new Error('You have to provide config');

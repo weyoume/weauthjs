@@ -1,33 +1,33 @@
 ## Getting Started
-For general information about Ezauth and setting up your app please see this post from @noisy: [How to configure Ezauth and use it with your application](https://ezira.io/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
+For general information about weauthjs and setting up your app please see this post from @noisy: [How to configure weauthjs and use it with your application](https://ezira.io/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
 
-### Include the Ezauth.js SDK in your HTML page
-You can download a minified version of ezauth.js here: [https://eziranetwork.github.io/ezauth.js-angular/ezauth.js.min.js](https://eziranetwork.github.io/ezauth.js-angular/ezauth.js.min.js) and include it in your HTML page:
+### Include the weauthjs SDK in your HTML page
+You can download a minified version of weauthjs here: [https://eziranetwork.github.io/weauthjs-angular/weauthjs.min.js](https://eziranetwork.github.io/weauthjs-angular/weauthjs.min.js) and include it in your HTML page:
 ```
-<script src="/scripts/ezauth.min.js"></script>
+<script src="/scripts/weauthjs.min.js"></script>
 ```
 
 ## SDK Methods
 ### Init SDK
 Call the Initialize() method when your app first loads to initialize the SDK:
 ```
-var ezauth = require('ezauth.js');
+var weauthjs = require('weauthjs');
 
-var api = ezauth.Initialize({
-  app: 'ezapp',
+var api = weauthjs.Initialize({
+  app: 'weapp',
   callbackURL: 'http://localhost:8000/demo/',
   accessToken: 'access_token',
   scope: ['vote', 'comment']
 });
 ```
 Parameters:
-- __app__: This is the name of the app that was registered in the Ezauth dashboard
-- __callbackURL__: This is the URL that users will be redirected to after interacting with Ezauth. It must be listed in the "Redirect URI(s)" list in the app settings EXACTLY the same as it is specified here
-- __accessToken__: If you have an oauth2 access token for this user already you can specify it here, otherwise you can leave it and set it later using ezauth.setAccessToken(accessToken).
-- __scope__: This is a list of operations the app will be able to access on the user's account. For a complete list of scopes see: [https://github.com/eziranetwork/ezauth/wiki/OAuth-2#scopes](https://github.com/eziranetwork/ezauth/wiki/OAuth-2#scopes)
+- __app__: This is the name of the app that was registered in the weauthjs dashboard
+- __callbackURL__: This is the URL that users will be redirected to after interacting with weauthjs. It must be listed in the "Redirect URI(s)" list in the app settings EXACTLY the same as it is specified here
+- __accessToken__: If weauthjs have an oauth2 access token for this user already weauthjs can specify it here, otherwise weauthjs can leave it and set it later using weauthjs.setAccessToken(accessToken).
+- __scope__: This is a list of operations the app will be able to access on the user's account. For a complete list of scopes see: [https://github.com/eziranetwork/weauth/wiki/OAuth-2#scopes](https://github.com/eziranetwork/weauth/wiki/OAuth-2#scopes)
 
 ### Get Login URL
-The following method returns a URL that you can redirect the user to so that they may log in to your app through Ezauth:
+The following method returns a URL that weauthjs can redirect the user to so that they may log in to weyoume app through weauthjs:
 ```
 var link = api.getLoginURL(state);
 console.log(link)
@@ -36,13 +36,13 @@ console.log(link)
 Parameters:
 - __state__: Data that will be passed to the callbackURL for your app after the user has logged in.
 
-After logging in, Ezauth will redirect the user to the "redirect_uri" specified in the login url above and add the following query string parameters for your app to use:
-- __access_token__: This is the oauth2 access token that is required to make any Ezira API calls on behalf of the current user. Once you have this you need to tell the Ezauth SDK to use it by either specifying it as a parameter to the init() method call or by calling ezauth.setAccessToken([accessToken]).
+After logging in, weauthjs will redirect the user to the "redirect_uri" specified in the login url above and add the following query string parameters for your app to use:
+- __access_token__: This is the oauth2 access token that is required to make any Ezira API calls on behalf of the current user. Once weauthjs have this weauthjs need to tell the weauthjs SDK to use it by either specifying it as a parameter to the init() method call or by calling weauthjs.setAccessToken([accessToken]).
 - __expires_in__: The number of seconds until the access token expires.
 - __username__: The username of the current user.
 
 ### Get user profile
-Once a user is logged in to your app you can call the following method to get the details of their account:
+Once a user is logged in to your app weauthjs can call the following method to get the details of their account:
 ```
 api.me(function (err, res) {
   console.log(err, res)
@@ -158,7 +158,7 @@ api.updateUserMetadata(metadata, function (err, res) {
 [user@linux ~]$ npm i
 [user@linux ~]$ npm run build
 ```
-publish if you want to
+publish if weauthjs want to
 ```console
 [user@linux ~]$ npm publish
 ```

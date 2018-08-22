@@ -1,13 +1,13 @@
 /* eslint-env browser */
 
-const ezauth = require('./ezauth');
+const weauthjs = require('./index.js');
 
 if (typeof window !== 'undefined') {
-  window.ezauth = ezauth;
+  window.weauthjs = weauthjs;
 }
 
 if (typeof global !== 'undefined') {
-  global.ezauth = ezauth;
+  global.weauthjs = weauthjs;
 }
 
-module.exports = ezauth;
+module.exports = weauthjs;
