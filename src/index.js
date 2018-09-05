@@ -16,7 +16,7 @@ class SDKError extends Error {
 
 function weauthjs() {
   this.options = {
-    baseURL: 'https://auth.ezira.io',
+    baseURL: 'https://auth.weyoume.io',
     app: '',
     callbackURL: '',
     scope: [],
@@ -172,16 +172,16 @@ weauthjs.prototype.ignore = function ignore(follower, following, cb) {
 
 weauthjs.prototype.claimRewardBalance = function claimRewardBalance(
   account,
-  ECOreward,
-  EUSDreward,
-  ESCORreward,
+  TMEreward,
+  TSDreward,
+  SCOREreward,
   cb
 ) {
   const params = {
     account,
-    ECOreward: ECOreward,
-    EUSDreward: EUSDreward,
-    ESCORreward: ESCORreward,
+    TMEreward: TMEreward,
+    TSDreward: TSDreward,
+    SCOREreward: SCOREreward,
   };
   return this.broadcast([['claimRewardBalance', params]], cb);
 };

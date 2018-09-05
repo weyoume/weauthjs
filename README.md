@@ -1,5 +1,5 @@
 ## Getting Started
-For general information about weauthjs and setting up your app please see this post from @noisy: [How to configure weauthjs and use it with your application](https://ezira.io/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
+For general information about weauthjs and setting up your app please see this post from @noisy: [How to configure weauthjs and use it with your application](https://weyoume.io/steemconnect/@noisy/how-to-configure-steemconnect-v2-and-use-it-with-your-application-how-it-works-and-how-it-is-different-from-v1)
 
 ### Include the weauthjs SDK in your HTML page
 You can download a minified version of weauthjs here: [https://eziranetwork.github.io/weauthjs-angular/weauthjs.min.js](https://eziranetwork.github.io/weauthjs-angular/weauthjs.min.js) and include it in your HTML page:
@@ -31,7 +31,7 @@ The following method returns a URL that weauthjs can redirect the user to so tha
 ```
 var link = api.getLoginURL(state);
 console.log(link)
-// => https://auth.ezira.io/oauth2/authorize?client_id=[app]&redirect_uri=[callbackURL]&scope=vote,comment&state=[state]
+// => https://auth.weyoume.io/oauth2/authorize?client_id=[app]&redirect_uri=[callbackURL]&scope=vote,comment&state=[state]
 ```
 Parameters:
 - __state__: Data that will be passed to the callbackURL for your app after the user has logged in.
@@ -66,9 +66,9 @@ api.vote(voter, author, permlink, weight, function (err, res) {
 });
 ```
 Parameters:
-- __voter__: The Ezira username of the current user.
-- __author__: The Ezira username of the author of the post or comment.
-- __permlink__: The link to the post or comment on which to vote. This is the portion of the URL after the last "/". For example the "permlink" for this post: https://alpha.ezira.io/steem/@ned/announcing-smart-media-tokens-smts would be "announcing-smart-media-tokens-smts".
+- __voter__: The protocol username of the current user.
+- __author__: The protocol username of the author of the post or comment.
+- __permlink__: The link to the post or comment on which to vote. This is the portion of the URL after the last "/". For example the "permlink" for this post: https://alpha.weyoume.io/steem/@ned/announcing-smart-media-tokens-smts would be "announcing-smart-media-tokens-smts".
 - __weight__: The weight of the vote. 10000 equale a 100% vote.
 - __callback__: A function that is called once the vote is submitted and included in a block. If successful the "res" variable will be a JSON object containing the details of the block and the vote operation.
 
@@ -85,12 +85,12 @@ The sign() method creates a URL to which your app can redirect the user to perfo
 ```
 var link = api.sign('transfer', {
   to: 'fabien',
-  amount: '1.000 ECOT',
+  amount: '1.000 TME',
   memo: 'Hello World!',
 }, 'http://localhost:8000/demo/transfer-complete');
 
 console.log(link);
-// => https://auth.ezira.io/sign/transfer?to=fabien&amount=1.000%20ECOT&memo=Hello%20World!&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fdemo%2Ftransfer-complete
+// => https://auth.weyoume.io/sign/transfer?to=fabien&amount=1.000%20TME&memo=Hello%20World!&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fdemo%2Ftransfer-complete
 ```
 
 ### Logout
@@ -131,7 +131,7 @@ api.ignore(follower, following, function (err, res) {
 
 ### Claim Reward Balance
 ```
-api.claimRewardBalance(account, ECOrewardin, EUSDreward, ESCORreward, function (err, res) {
+api.claimRewardBalance(account, TMErewardin, TSDreward, SCOREreward, function (err, res) {
   console.log(err, res)
 });
 ```
