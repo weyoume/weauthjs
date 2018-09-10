@@ -13,11 +13,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eziranetwork/weauthjs.git"
+    "url": "git+https://github.com/WeYouMe/weauthjs.git"
   },
   "keywords": [
-    "ezira",
-    "ezira network",
+    "WeYouMe",
+    "WeYouMe network",
     "WeYouMe",
     "blockchain",
     "weauth",
@@ -26,9 +26,9 @@
   "author": "Lopu <lopu@lopudesigns.com> (https://github.com/lopudesigns)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/eziranetwork/weauthjs/issues"
+    "url": "https://github.com/WeYouMe/weauthjs/issues"
   },
-  "homepage": "https://github.com/eziranetwork/weauthjs#readme",
+  "homepage": "https://github.com/WeYouMe/weauthjs#readme",
   "dependencies": {
     "cross-fetch": "^1.1.1",
     "debug": "^2.2.0"

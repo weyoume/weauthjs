@@ -16,7 +16,7 @@ class SDKError extends Error {
 
 function weauthjs() {
   this.options = {
-    baseURL: 'https://auth.weyoume.io',
+    baseURL: 'https://auth.WeYouMe.io',
     app: '',
     callbackURL: '',
     scope: [],
